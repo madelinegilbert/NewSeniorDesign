@@ -134,6 +134,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    responders (2.1.1)
+      railties (>= 4.2.0, < 5.1)
     rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.1)
@@ -197,6 +199,7 @@ DEPENDENCIES
   pg
   rails (= 4.2.1)
   rails_12factor
+  responders
   rspec-expectations
   rspec-rails
   sass-rails (~> 5.0.3)
@@ -206,4 +209,4 @@ DEPENDENCIES
   uglifier (>= 2.7.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
