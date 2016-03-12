@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      resources :students
+      get 'students' => 'students#index'
+      get 'students' => 'students#create', :as => 'create_student'
+    end
+  end
+  
+  resources :students
+  root to: 'students#index'
+  
+  post 'students' => 'students#create'
+end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -14,8 +28,6 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :movies
-  
   # Example resource route with options:
   #   resources :products do
   #     member do
@@ -55,4 +67,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
