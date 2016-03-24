@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
-  
+  respond_to :json
+  skip_before_filter  :verify_authenticity_token
   def student_params
     params.require(:student).permit(:seating_area, :technology, :activity, :floor)
   end 
