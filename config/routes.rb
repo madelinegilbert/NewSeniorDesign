@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :students
       get 'students' => 'students#index'
-      post 'students' => 'students#create', :as => 'create_student'
+      match '/request' => 'students#create', via: :post
     end
   end
   
