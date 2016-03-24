@@ -9,27 +9,17 @@ class Api::V1::StudentsController < ApplicationController
             respond_with Student.find(params[:id])
         end
       
-        def create
+       def create
 
-            new_student = Student.create!(:floor => params[:floor], :activity => params[:activity], :technology => params[:technology], :seating_area => params[:seating_area])
-            render :status => 200,
-            :json => { :success => true,
-                      :info => "Student",
-            :data => { :activity => new_student.activity,
-                       :floor => new_provider.floor,
-                       :technology => new_student.technology,
-                       :seating => new_student.seating
-                     }
-            }
-        end
-      
-        def update
-            respond_with Student.update(params[:id], params[:students])
-        end
-        
-        #butts
-      
-        def destroy
-            respond_with Student.destroy(params[:id])
-        end
+        new_student = Student.create!(:floor => params[:floor], :seating_area => params[:seating_area], :technology => params[:technology], :activity => params[:activity])
+          render :status => 200,
+                 :json => { :success => true,
+                            :info => "Student Created",
+                   :data => { :floor => new_student.floor,
+                              :seating_area => new_student.seating_area,
+                              :technology => new_student.technology,
+                              :activity => new_student.activity
+                              }
+                          }
+  end
 end
