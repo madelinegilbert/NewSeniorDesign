@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get 'today' => 'students#today'
   get 'yesterday' => 'students#yesterday'
   get 'week' => 'students#week'
+  get 'month' => 'students#month'
+  get 'half' => 'student#half'
+  get 'year' => 'students#year'
   post 'students' => 'students#create'
 end
 

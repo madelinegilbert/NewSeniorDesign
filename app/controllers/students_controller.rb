@@ -37,6 +37,30 @@ class StudentsController < ApplicationController
     end
   end
   
+  def month
+    @students = Student.where(:created_at =>(Time.now.midnight - 1.month)..Time.now)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def half
+    @students = Student.where(:created_at =>(Time.now.midnight - 6.month)..Time.now)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def year
+    @students = Student.where(:created_at =>(Time.now.midnight - 1.year)..Time.now)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
   def create
     new_student = Student.create!(:floor => params[:floor], :seating_area => params[:seating_area], :technology => params[:technology], :activity => params[:activity])
       render :status => 200,
