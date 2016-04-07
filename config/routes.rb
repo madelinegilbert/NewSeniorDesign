@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   get 'today' => 'students#today'
   get 'yesterday' => 'students#yesterday'
-  get 'week' => 'student#week'
+  get 'week' => 'students#week'
   post 'students' => 'students#create'
 end
 
