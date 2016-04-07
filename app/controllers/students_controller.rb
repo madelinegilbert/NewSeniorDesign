@@ -17,7 +17,7 @@ class StudentsController < ApplicationController
     @students = Student.where("created_at >= ?", Time.zone.now.beginning_of_day)
     respond_to do |format|
       format.html
-      format.json { render json: @student }
+      format.json { render json: @students }
     end
   end
   
