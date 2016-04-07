@@ -13,11 +13,12 @@ class StudentsController < ApplicationController
     end
   end
   
-  def queryByToday
-    @students = Student.where(:created_at => Date.today.beginning_of_day)
+  def today
+    @students = Student.where(:created_at => Date.today.beginning_of_day..Date.today.end_of_day)
     respond_to do |format|
       format.html
       format.json { render json: @student }
+    end
   end
   
   def queryByLastWeek

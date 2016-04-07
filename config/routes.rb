@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :students
   root to: 'students#index'
   
-  get 'today' => 'students#queryByToday'
+  get 'today' => 'students#today'
   post 'students' => 'students#create'
 end
 
