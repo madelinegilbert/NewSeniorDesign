@@ -21,7 +21,7 @@ class StudentsController < ApplicationController
     end
   end
   
-  def tomorrow 
+  def yesterday 
     @students = Student.where(:created_at => (Time.now.midnight - 1.day)..Time.now.midnight)
     respond_to do |format|
       format.html
