@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root to: 'students#index'
   
   get 'today' => 'students#today'
+  get 'yesterday' => 'students#yesterday'
   post 'students' => 'students#create'
 end
 
