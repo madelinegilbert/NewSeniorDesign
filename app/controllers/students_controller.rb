@@ -29,8 +29,8 @@ class StudentsController < ApplicationController
     end
   end
   
-  def queryByLastWeek
-    @students = Student.where(:created_at => Date.today.beginning_of_day..@selected_date.end_of_day)
+  def week
+    @students = Student.where(:created_at =>(Time.now.midnight - 7.day)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
