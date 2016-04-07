@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
   end
   
   def today
-    @students = Student.where(:created_at => Date.today.beginning_of_day..Date.today.end_of_day)
+    @students = Student.where(:created_at => Date.now.beginning_of_day..Date.now.end_of_day)
     respond_to do |format|
       format.html
       format.json { render json: @student }
