@@ -13,8 +13,22 @@ class StudentsController < ApplicationController
     end
   end
   
+  def queryByToday
+    @students = Student.where(:created_at => Date.today.beginning_of_day)
+    respond_to do |format|
+      format.html
+      format.json { render json: @student }
+  end
+  
+  def queryByLastWeek
+    @students = Student.where(:created_at => Date.today.beginning_of_day..@selected_date.end_of_day)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
   def create
-
     new_student = Student.create!(:floor => params[:floor], :seating_area => params[:seating_area], :technology => params[:technology], :activity => params[:activity])
       render :status => 200,
              :json => { :success => true,
