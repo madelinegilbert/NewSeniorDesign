@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'yesterday' => 'students#yesterday'
   get 'week' => 'students#week'
   get 'month' => 'students#month'
-  get 'half' => 'student#half'
+  get 'half' => 'students#half'
   get 'year' => 'students#year'
   post 'students' => 'students#create'
 end
