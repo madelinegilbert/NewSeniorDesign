@@ -61,6 +61,30 @@ class StudentsController < ApplicationController
     end
   end
   
+  def mainFloor 
+    @students = Student.where(:floor => 1)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def lowerLevel
+    @students = Student.where(:floor => 0) 
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def podSeating
+    @students = Student.where(:seating_area => 'podsTotal1') .or(Student.where(:seating_area => 'podsTotal'))
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
   def create
     new_student = Student.create!(:floor => params[:floor], :seating_area => params[:seating_area], :technology => params[:technology], :activity => params[:activity])
       render :status => 200,

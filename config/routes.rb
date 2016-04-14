@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get 'month' => 'students#month'
   get 'half' => 'students#half'
   get 'year' => 'students#year'
+  get 'level1' => 'students#mainFloor'
+  get 'level0' => 'students#lowerLevel'
+  get 'pods' => 'students#podSeating'
   post 'students' => 'students#create'
 end
 
