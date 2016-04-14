@@ -78,7 +78,7 @@ class StudentsController < ApplicationController
   end
   
   def podSeating
-    @students = Student.where(:seating_area => 'podsTotal1') .or(Student.where(:seating_area => 'podsTotal'))
+    @students = Student.where(:seating_area => ['podsTotal1','podsTotal'])
     respond_to do |format|
       format.html
       format.json { render json: @students }
