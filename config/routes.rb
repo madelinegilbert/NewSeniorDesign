@@ -19,6 +19,11 @@ Rails.application.routes.draw do
   get 'level1' => 'students#mainFloor'
   get 'level0' => 'students#lowerLevel'
   get 'pods' => 'students#podSeating'
+  get 'browsing' => 'students#browsing'
+  get 'circDesk' => 'students#circDesk'
+  get 'staff' => 'students#staff'
+  get 'groupStudy' => 'students#groupStudy'
+  get 'quietStudy' => 'students#quietStudy'
   post 'students' => 'students#create'
 end
 

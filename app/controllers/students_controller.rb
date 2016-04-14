@@ -85,6 +85,46 @@ class StudentsController < ApplicationController
     end
   end
   
+  def staff 
+    @students = Student.where(:activity => "Working w/Library Staff")
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def browsing
+    @students = Student.where(:activity => "Browsing")
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def circDesk
+    @students = Student.where(:activity => "Circ Desk")
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def quietStudy
+    @students = Student.where(:activity => "Quiet Study")
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def groupStudy
+    @students = Student.where(:activity => "Group Study")
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
   def create
     new_student = Student.create!(:floor => params[:floor], :seating_area => params[:seating_area], :technology => params[:technology], :activity => params[:activity])
       render :status => 200,
