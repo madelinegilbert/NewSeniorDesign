@@ -125,6 +125,87 @@ class StudentsController < ApplicationController
     end
   end
   
+  def gamerChairs
+    @students = Student.where(:seating_area => 'Gamer Chair')
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def frontDesk
+    @studenst = Student.where(:seating_area => 'frontDeskTotal')
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def computerLab 
+    @students = Student.where(:seating_area => 'computerLabTotal')
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  # other stuff
+  def scanners
+    @students = Student.where(:technology => 'Scanner')
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def studyRoom
+    @students = Student.where(:seating_area => 'studyRoomTotal')
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def photocopier
+    @students = Student.where(:technology => 'Photocopier')
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def personalDevice
+    @students = Student.where(:technology => 'Personal Device')
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def printer
+    @students = Student.where(:technology => 'Printer')
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def mediaScape
+    @students = Student.where(:technology => 'Media Scape')
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def itcComputer
+    @students = Student.where(:technology => 'ITC Computer')
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
   def create
     new_student = Student.create!(:floor => params[:floor], :seating_area => params[:seating_area], :technology => params[:technology], :activity => params[:activity])
       render :status => 200,
