@@ -134,7 +134,7 @@ class StudentsController < ApplicationController
   end
   
   def frontDesk
-    @studenst = Student.where(:seating_area => 'frontDeskTotal')
+    @students = Student.where(:seating_area => 'frontDeskTotal')
     respond_to do |format|
       format.html
       format.json { render json: @students }
