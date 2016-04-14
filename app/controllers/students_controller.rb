@@ -86,7 +86,7 @@ class StudentsController < ApplicationController
   end
   
   def staff 
-    @students = Student.where(:activity => "Working w/Library Staff")
+    @students = Student.where(:activity => "Working w/Staff")
     respond_to do |format|
       format.html
       format.json { render json: @students }
