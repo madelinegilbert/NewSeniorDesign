@@ -21,6 +21,22 @@ class StudentsController < ApplicationController
     end
   end
   
+  def todayFirstFloor
+    @students = Student.where("created_at >= ?", Time.zone.now.beginning_of_day, :floor => 1)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def todayLowerFloor
+    @students = Student.where("created_at >= ?", Time.zone.now.beginning_of_day, :floor => 0)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
   def yesterday 
     @students = Student.where(:created_at => (Time.now.midnight - 1.day)..Time.now.midnight)
     respond_to do |format|
@@ -29,8 +45,40 @@ class StudentsController < ApplicationController
     end
   end
   
+  def yesterdayFirstFloor
+    @students = Student.where(:created_at => (Time.now.midnight - 1.day)..Time.now.midnight, :floor =>1)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end 
+  
+  def yesterdayLowerFloor
+    @students = Student.where(:created_at => (Time.now.midnight - 1.day)..Time.now.midnight, :floor => 0)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+      
   def week
     @students = Student.where(:created_at =>(Time.now.midnight - 7.day)..Time.now)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def weekFirstFloor
+    @students = Student.where(:created_at =>(Time.now.midnight - 7.day)..Time.now, :floor => 1)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def weekLowerFloor
+    @students = Student.where(:created_at =>(Time.now.midnight - 7.day)..Time.now, :floor => 0)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -45,6 +93,22 @@ class StudentsController < ApplicationController
     end
   end
   
+  def monthFirstFloor
+    @students = Student.where(:created_at =>(Time.now.midnight - 1.month)..Time.now, :floor => 1)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def monthLowerFloor
+    @students = Student.where(:created_at =>(Time.now.midnight - 1.month)..Time.now, :floor => 0)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
   def half
     @students = Student.where(:created_at =>(Time.now.midnight - 6.month)..Time.now)
     respond_to do |format|
@@ -53,8 +117,40 @@ class StudentsController < ApplicationController
     end
   end
   
+  def halfFirstFloor
+    @students = Student.where(:created_at =>(Time.now.midnight - 6.month)..Time.now, :floor => 1)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def halfLowerFloor
+    @students = Student.where(:created_at =>(Time.now.midnight - 6.month)..Time.now, :floor => 0)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
   def year
     @students = Student.where(:created_at =>(Time.now.midnight - 1.year)..Time.now)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def yearFirstFloor
+    @students = Student.where(:created_at =>(Time.now.midnight - 1.year)..Time.now, :floor => 1)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def yearLowerFloor
+    @students = Student.where(:created_at =>(Time.now.midnight - 1.year)..Time.now, :floor => 0)
     respond_to do |format|
       format.html
       format.json { render json: @students }
