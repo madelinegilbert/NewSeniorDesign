@@ -174,7 +174,7 @@ class StudentsController < ApplicationController
   end
   
   def podSeating
-    @students = Student.where(:seating_area => ['podsTotal1','podsTotal'])
+    @students = Student.where(:seating_area => ['podsTotal1','podsTotal'], :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -182,7 +182,7 @@ class StudentsController < ApplicationController
   end
   
   def staff 
-    @students = Student.where(:activity => "Working w/Staff")
+    @students = Student.where(:activity => "Working w/Staff", :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -190,7 +190,7 @@ class StudentsController < ApplicationController
   end
   
   def browsing
-    @students = Student.where(:activity => "Browsing")
+    @students = Student.where(:activity => "Browsing", :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -198,7 +198,7 @@ class StudentsController < ApplicationController
   end
   
   def circDesk
-    @students = Student.where(:activity => "Circ Desk")
+    @students = Student.where(:activity => "Circ Desk", :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -206,7 +206,7 @@ class StudentsController < ApplicationController
   end
   
   def quietStudy
-    @students = Student.where(:activity => "Quiet Study")
+    @students = Student.where(:activity => "Quiet Study", :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -214,7 +214,7 @@ class StudentsController < ApplicationController
   end
   
   def groupStudy
-    @students = Student.where(:activity => "Group Study")
+    @students = Student.where(:activity => "Group Study", :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -222,7 +222,7 @@ class StudentsController < ApplicationController
   end
   
   def gamerChairs
-    @students = Student.where(:seating_area => 'Gamer Chair')
+    @students = Student.where(:seating_area => 'Gamer Chair', :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -230,7 +230,7 @@ class StudentsController < ApplicationController
   end
   
   def frontDesk
-    @students = Student.where(:seating_area => 'frontDeskTotal')
+    @students = Student.where(:seating_area => 'frontDeskTotal', :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -238,7 +238,7 @@ class StudentsController < ApplicationController
   end
   
   def computerLab 
-    @students = Student.where(:seating_area => 'computerLabTotal')
+    @students = Student.where(:seating_area => 'computerLabTotal', :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -247,7 +247,7 @@ class StudentsController < ApplicationController
   
   # other stuff
   def scanners
-    @students = Student.where(:technology => 'Scanner')
+    @students = Student.where(:technology => 'Scanner', :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -255,7 +255,7 @@ class StudentsController < ApplicationController
   end
   
   def studyRoom
-    @students = Student.where(:seating_area => 'studyRoomTotal')
+    @students = Student.where(:seating_area => 'studyRoomTotal', :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -263,7 +263,7 @@ class StudentsController < ApplicationController
   end
   
   def photocopier
-    @students = Student.where(:technology => 'Photocopier')
+    @students = Student.where(:technology => 'Photocopier', :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -271,7 +271,7 @@ class StudentsController < ApplicationController
   end
   
   def personalDevice
-    @students = Student.where(:technology => 'Personal Device')
+    @students = Student.where(:technology => 'Personal Device', :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -279,7 +279,7 @@ class StudentsController < ApplicationController
   end
   
   def printer
-    @students = Student.where(:technology => 'Printer')
+    @students = Student.where(:technology => 'Printer', :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -287,7 +287,7 @@ class StudentsController < ApplicationController
   end
   
   def mediaScape
-    @students = Student.where(:technology => 'Media Scape')
+    @students = Student.where(:technology => 'Media Scape', :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -295,7 +295,7 @@ class StudentsController < ApplicationController
   end
   
   def itcComputer
-    @students = Student.where(:technology => 'ITC Computer')
+    @students = Student.where(:technology => 'ITC Computer', :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
