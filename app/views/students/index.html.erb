@@ -181,18 +181,10 @@
             <td><%= printerCount %></td>
         </tr>
     </table>
-
-
-gamerChairCount = 0
-        carrelCount = 0
-        beanBagCount = 0
-        groupRoomCount = 0
-        generalComputersCount = 0
-        groupSeatingCount = 0
-        computerLabCount = 0
-        comfyChairsCount = 0
+    
 <h1>Floor</h1>
 <%= bar_chart Student.group(:floor).count %>
+
 <h1>Seating</h1>
 <%= bar_chart [
     ["Study Carrels",carrelCount], 
@@ -203,9 +195,22 @@ gamerChairCount = 0
     ["Computer Lab", computerLabCount],
     ["Comfy Chairs", comfyChairsCount]
 ]%>
-
+        
 <h1>Technology</h1>
-<%= bar_chart Student.group(:technology).count %>
+<%= bar_chart [
+    ["Scanner", scannerCount], 
+    ["Personal Device", personalDeviceCount], 
+    ["Photocopier", photocopierCount], 
+    ["Media Scape", mediaScapeCount],
+    ["ITC Computer", itcComputerCount],
+    ["Printer", printerCount],
+]%>
 
 <h1>Activity</h1>
-<%= bar_chart Student.group(:activity).count %>
+<%= bar_chart [
+    ["Working w/Library Staff", workingWStaffCount], 
+    ["Browsing", browsingCount], 
+    ["Circ Desk", circDeskCount], 
+    ["Quiet Study", quietStudyCount],
+    ["Group Study", groupStudyCount],
+]%>
