@@ -46,5 +46,8 @@ Rails.application.routes.draw do
   get 'staff' => 'students#staff'
   get 'groupStudy' => 'students#groupStudy'
   get 'quietStudy' => 'students#quietStudy'
+  get 'beanBagChair' => 'students#beanBagChair'
+  get 'easyChair' => 'students#easyChair'
+  get 'studyCarrel' => 'students#studyCarrel'
   post 'students' => 'students#create'
 end

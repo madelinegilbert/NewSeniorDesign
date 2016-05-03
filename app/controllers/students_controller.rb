@@ -302,6 +302,30 @@ class StudentsController < ApplicationController
     end
   end
   
+  def studyCarrel
+    @students = Student.where(:seating_area => ['studyCarrelTotal','Study Carrel'], :created_at =>(Time.now.midnight - 1.month)..Time.now)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def easyChair 
+    @students = Student.where(:seating_area => 'Easy Chair', :created_at =>(Time.now.midnight - 1.month)..Time.now)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def beanBagChair
+    @students = Student.where(:seating_area => 'Bean Bag Chair', :created_at =>(Time.now.midnight - 1.month)..Time.now)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+    
   def create
     new_student = Student.create!(:floor => params[:floor], :seating_area => params[:seating_area], :technology => params[:technology], :activity => params[:activity])
       render :status => 200,
