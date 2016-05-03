@@ -6,16 +6,15 @@
         floor0Count = 0
         gamerCount = 0
         grouptableCount = 0
-        individualtableCount = 0
-        armchairCount = 0
+        mainComputers = 0
         itsCount = 0
         scannerCount = 0
         personalCount = 0
         studyingCount=0
         sleepingCount = 0
         browsingCount = 0
-        readingCount = 0
         scanningCount = 0
+        carrelCount = 0
     %>
     <% @students.each do |student|   
         case student.floor
@@ -26,9 +25,9 @@
             else
         end
       
-        case student.seating
-            when 'gamer'
-                gamerCount = gamerCount + 1
+        case student.seating_area
+            when 'Study Carrels'
+                carrelCount = carrelCount + 1
             when "armchair"
                 armchairCount += 1
             when "group table"
@@ -41,9 +40,9 @@
         case student.technology
             when "its"
                 itsCount = itsCount + 1
-            when "scanner"
+            when "Scanner"
                 scannerCount += 1
-            when "personal"
+            when "Personal Device"
                 personalCount = personalCount + 1
             else
         end
@@ -140,7 +139,7 @@
           <tr>
               <td> <%= student.floor %> </td>
               <td> <%= student.activity %> </td>
-              <td> <%= student.seating %> </td>
+              <td> <%= student.seating_area %> </td>
               <td> <%= student.technology %> </td>
               <td> <%= student.created_at %> </td>
           </tr>
@@ -153,14 +152,10 @@
 <%= bar_chart Student.group(:floor).count %>
 
 <h1>Seating</h1>
-<%= bar_chart Student.group(:seating).count %>
+<%= bar_chart Student.group(:seating_area).count %>
 
 <h1>Technology</h1>
 <%= bar_chart Student.group(:technology).count %>
 
 <h1>Activity</h1>
 <%= bar_chart Student.group(:activity).count %>
-
-<h1>Timing</h1>
-
-<%= scatter_chart Student.pluck(:created_at) %>

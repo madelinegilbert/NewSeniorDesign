@@ -1,0 +1,137 @@
+ <h1>Student Data</h1>
+  
+  <table border="1" id="rawdata">
+      <tr>
+          <td>Floor</td>
+          <td>Activity</td>
+          <td>Seating</td>
+          <td>Technology</td>
+          <td>Time</td>
+      </tr>
+      <% @students.each do |student| %>
+          <tr>
+              <td> <%= student.floor %> </td>
+              <td> <%= student.activity %> </td>
+              <td> <%= student.seating %> </td>
+              <td> <%= student.technology %> </td>
+              <td> <%= student.created_at %> </td>
+          </tr>
+
+      <% end %>|
+      
+  </table>
+
+<h1>Data Summary</h1>
+
+     <% floor1Count = 0
+        floor0Count = 0
+        gamerCount = 0
+        grouptableCount = 0
+        individualtableCount = 0
+        itsCount = 0
+        notechCount = 0
+        personalCount = 0
+        studyingCount=0
+        sleepingCount = 0
+    %>
+    <% @students.each do |student| %>
+        <%=  
+        case student.floor
+            when 0
+                floor0Count = floor0Count + 1
+            when 1
+                floor1Count = floor1Count + 1
+            else
+        end
+      
+        case student.seating
+            when 'gamer'
+                gamerCount = gamerCount + 1
+            when "group table"
+                grouptableCount = grouptableCount + 1
+            when "individual table"
+                individualtableCount = individualtableCount + 1 
+            else
+        end
+        
+        case student.technology
+            when "its"
+                itsCount = itsCount + 1
+            when "none"
+                notechCount = notechCount + 1
+            when "personal"
+                personalCount = personalCount + 1
+            else
+        end
+        
+        case student.activity
+            when "studying"
+                studyingCount = studyingCount + 1
+            when "sleeping"
+                sleepingCount = sleepingCount + 1
+            else
+        end
+        %>
+    <% end %>
+
+    <table id="summary">
+        <tr>
+            <td></td>
+            <td>Total</td>
+        </tr>
+        <tr>
+            <td>Floor 0</td>
+            <td><%= floor0Count %></td>
+        </tr>
+        <tr>
+            <td>Floor 1</td>
+            <td><%= floor1Count %></td>
+        </tr>
+        <tr>
+            
+            <td>Gamer Chair</td>
+            <td><%= gamerCount %></td>
+        </tr>
+        <tr>
+        <td>Group Table</td>
+            <td><%= grouptableCount %></td>
+        </tr>
+                <tr>
+        <td>Individual Table</td>
+            <td><%= individualtableCount %></td>
+        </tr>
+        <tr>
+            <td>ITS Tech</td>
+            <td><%= itsCount %></td>
+        </tr>       
+        <tr>
+            <td>Personal Tech</td>
+            <td><%= personalCount %></td>
+        </tr>
+        <tr>
+            <td>Studying</td>
+            <td><%= studyingCount %></td>
+        </tr>        
+        <tr>
+            <td>Sleeping</td>
+            <td><%= sleepingCount %></td>
+        </tr>
+    </table>
+
+
+<%= line_chart Student.group_by_day(:created_at).count %>
+  
+      <h1>Timeline</h1>
+    <div id="chart-timeline" style="height: 300px;"></div>
+    <script>
+      new Chartkick.Timeline("chart-timeline", [["Washington", "1789-04-29", "1797-03-03"],["Adams", "1797-03-03", "1801-03-03"],["Jefferson", "1801-03-03", "1809-03-03"]]);
+    </script>
+    
+    
+ <%= timeline [
+  ["Washington", "1789-04-29", "1797-03-03"],
+  ["Adams", "1797-03-03", "1801-03-03"],
+  ["Jefferson", "1801-03-03", "1809-03-03"]
+] %>
+
+<%= pie_chart({"Football" => 10, "Basketball" => 5}) %>
