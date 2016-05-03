@@ -4,17 +4,14 @@
 
      <% floor1Count = 0
         floor0Count = 0
-        gamerCount = 0
-        grouptableCount = 0
-        mainComputers = 0
-        itsCount = 0
-        scannerCount = 0
-        personalCount = 0
-        studyingCount=0
-        sleepingCount = 0
-        browsingCount = 0
-        scanningCount = 0
+        gamerChairCount = 0
         carrelCount = 0
+        beanBagCount = 0
+        groupRoomCount = 0
+        generalComputersCount = 0
+        groupSeatingCount = 0
+        computerLabCount = 0
+        comfyChairsCount = 0
     %>
     <% @students.each do |student|   
         case student.floor
@@ -28,32 +25,30 @@
         case student.seating_area
             when 'Study Carrels'
                 carrelCount = carrelCount + 1
-            when "group table"
-                grouptableCount = grouptableCount + 1
+            when "Gamer Chair"
+                gamerChairCount = gamerChairCount + 1
+            when "computerLabTotal"
+                computerLabCount = computerLabCount + 1
+            when "studyRoomTotal"
+                groupRoomCount = groupRoomCount + 1
+            when "Bean Bag Chair"
+                beanBagCount = beanBagCount + 1
+            when "Comfy Chair" || "comfyChairs1Total" || "comfyChairs2Total"
+                comfyChairsCount = comfyChairsCount + 1
+            when "desktops1Total"
+                generalComputersCount = generalComputersCount + 1
+            when "generalSeating1Total" || "generalSeating2Total"
+                groupSeatingCount = groupSeatingCount + 1
             else
+                
         end
         
         case student.technology
-            when "its"
-                itsCount = itsCount + 1
-            when "Scanner"
-                scannerCount += 1
-            when "Personal Device"
-                personalCount = personalCount + 1
-            else
         end
         
         case student.activity
-            when "studying"
-                studyingCount = studyingCount + 1
-            when "sleeping"
-                sleepingCount = sleepingCount + 1
-            when "scanning"
-                scanningCount += 1
-            when "reading"
-                readingCount += 1
-            when "browsing"
-                browsingCount += 1
+            when "Working w/ Staff"
+                student.destroy
             else
         end
    
