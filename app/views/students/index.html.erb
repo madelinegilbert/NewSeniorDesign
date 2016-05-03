@@ -28,8 +28,6 @@
         case student.seating_area
             when 'Study Carrels'
                 carrelCount = carrelCount + 1
-            when "armchair"
-                armchairCount += 1
             when "group table"
                 grouptableCount = grouptableCount + 1
             when "individual table"
@@ -79,10 +77,6 @@
         <tr>
             <td>Gamer Chair</td>
             <td><%= gamerCount %></td>
-        </tr>
-        <tr>
-            <td>Armchair</td>
-            <td><%= armchairCount %></td>
         </tr>
         <tr>
         <td>Group Table</td>
