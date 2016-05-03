@@ -47,7 +47,9 @@ Rails.application.routes.draw do
   get 'groupStudy' => 'students#groupStudy'
   get 'quietStudy' => 'students#quietStudy'
   get 'beanBagChair' => 'students#beanBagChair'
-  get 'easyChair' => 'students#easyChair'
+  get 'comfyChair' => 'students#comfyChair'
   get 'studyCarrel' => 'students#studyCarrel'
+  get 'mainComputerSeating' => 'students#mainComputerSeating'
+  get 'groupAreaSeating' => 'students#groupAreaSeating'
   post 'students' => 'students#create'
 end

@@ -213,6 +213,22 @@ class StudentsController < ApplicationController
     end
   end
   
+  def groupAreaSeating
+    @students = Student.where(:seating_area => ['generalSeating1Total', 'generalSeating2Total'], :created_at =>(Time.now.midnight - 1.month)..Time.now)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
+  def mainComputerSeating
+    @students = Student.where(:seating_area => 'desktops1Total', :created_at =>(Time.now.midnight - 1.month)..Time.now)
+    respond_to do |format|
+      format.html
+      format.json { render json: @students }
+    end
+  end
+  
   def groupStudy
     @students = Student.where(:activity => "Group Study", :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
@@ -310,8 +326,8 @@ class StudentsController < ApplicationController
     end
   end
   
-  def easyChair 
-    @students = Student.where(:seating_area => 'Easy Chair', :created_at =>(Time.now.midnight - 1.month)..Time.now)
+  def comfyChair 
+    @students = Student.where(:seating_area => ['Comfy Chair', 'comfyChairs2Total', 'comfyChairs1Total'], :created_at =>(Time.now.midnight - 1.month)..Time.now)
     respond_to do |format|
       format.html
       format.json { render json: @students }
