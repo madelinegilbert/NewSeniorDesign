@@ -182,11 +182,27 @@
         </tr>
     </table>
 
+
+gamerChairCount = 0
+        carrelCount = 0
+        beanBagCount = 0
+        groupRoomCount = 0
+        generalComputersCount = 0
+        groupSeatingCount = 0
+        computerLabCount = 0
+        comfyChairsCount = 0
 <h1>Floor</h1>
 <%= bar_chart Student.group(:floor).count %>
-
 <h1>Seating</h1>
-<%= bar_chart Student.group(:seating_area).count %>
+<%= bar_chart [
+    ["Study Carrels",carrelCount], 
+    ["Bean Bag Chairs", beanBagCount], 
+    ["Reserved Group Rooms", groupRoomCount], 
+    ["Computers--Main",generalComputersCount],
+    ["Group Seating", groupSeatingCount],
+    ["Computer Lab", computerLabCount],
+    ["Comfy Chairs", comfyChairsCount]
+]%>
 
 <h1>Technology</h1>
 <%= bar_chart Student.group(:technology).count %>
