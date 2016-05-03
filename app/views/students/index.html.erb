@@ -12,6 +12,17 @@
         groupSeatingCount = 0
         computerLabCount = 0
         comfyChairsCount = 0
+        scannerCount = 0
+        personalDeviceCount = 0
+        photocopierCount = 0
+        mediaScapeCount = 0
+        itcComputerCount = 0
+        printerCount = 0
+        workingWStaffCount = 0
+        browsingCount = 0
+        circDeskCount = 0
+        quietStudyCount = 0
+        groupStudyCount = 0
     %>
     <% @students.each do |student|   
         case student.floor
@@ -44,15 +55,33 @@
         end
         
         case student.technology
-            when "meh"
-                @ok = 0
+            when "Scanner"
+                scannerCount = scannerCount + 1
+            when "Personal Device"
+                personalDeviceCount = personalDeviceCount + 1
+            when "Photopier"
+                photocopierCount = photocopierCount + 1
+            when "Media Scape"
+                mediaScapeCount = mediaScapeCount + 1
+            when "ITC Computer"
+                itcComputerCount = itcComputerCount + 1
+            when "Printer"
+                printerCount = printerCount + 1
             else
                 
         end
         
         case student.activity
-            when "Working w/ Staff"
-                student.destroy
+            when "Working w/Library Staff"
+                workingWStaffCount = workingWStaffCount + 1
+            when "Browsing"
+                browsingCount = browsingCount + 1
+            when "Circ Desk"
+                circDeskCount = circDeskCount + 1
+            when "Quiet Study"
+                quietStudyCount = quietStudyCount + 1
+            when "Group Study"
+                groupStudyCount = groupStudyCount + 1
             else
         end
    
@@ -74,6 +103,10 @@
         <tr>
             <td>Gamer Chair</td>
             <td><%= gamerChairCount %></td>
+        </tr>
+        <tr>
+            <td>Study Carrels</td>
+            <td><%= carrelCount %></td>
         </tr>
         <tr>
             <td>Comfy Chair</td>
@@ -98,6 +131,50 @@
         <tr>
             <td>Reserved Group Rooms</td>
             <td><%= groupRoomCount %></td>
+        </tr>
+        <tr>
+            <td>Group Study</td>
+            <td><%= groupStudyCount %></td>
+        </tr>
+        <tr>
+            <td>Quiet Study</td>
+            <td><%= quietStudyCount %></td>
+        </tr>
+        <tr>
+            <td>Circ Desk</td>
+            <td><%= circDeskCount %></td>
+        </tr>
+        <tr>
+            <td>Browsing</td>
+            <td><%= browsingCount %></td>
+        </tr>
+        <tr>
+            <td>Working w/Library Staff</td>
+            <td><%= workingWStaffCount %></td>
+        </tr>
+        <tr>
+            <td>Scanner</td>
+            <td><%= scannerCount %></td>
+        </tr>
+        <tr>
+            <td>Personal Device</td>
+            <td><%= personalDeviceCount %></td>
+        </tr>
+        <tr>
+            <td>Photocopier</td>
+            <td><%= photocopierCount %></td>
+        </tr>
+        <tr>
+            <td>Media Scape</td>
+            <td><%= mediaScapeCount %></td>
+        </tr>
+        <tr>
+            <td>ITC Computer</td>
+            <td><%= itcComputerCount %></td>
+        </tr>
+        <tr>
+            <td>Printer</td>
+            <td><%= printerCount %></td>
         </tr>
     </table>
 
