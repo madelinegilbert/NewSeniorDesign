@@ -59,6 +59,8 @@
                 scannerCount = scannerCount + 1
             when "Personal Device"
                 personalDeviceCount = personalDeviceCount + 1
+            when "personal device"
+                student.destroy
             when "Photopier"
                 photocopierCount = photocopierCount + 1
             when "Media Scape"
@@ -82,6 +84,8 @@
                 quietStudyCount = quietStudyCount + 1
             when "Group Study"
                 groupStudyCount = groupStudyCount + 1
+            when "group study"
+                student.destroy
             else
         end
    
