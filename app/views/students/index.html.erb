@@ -1,0 +1,166 @@
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<center><h1>Engineering Library Usage Data</h1></center><br/>
+<h1>Data Summary</h1>
+
+     <% floor1Count = 0
+        floor0Count = 0
+        gamerCount = 0
+        grouptableCount = 0
+        individualtableCount = 0
+        armchairCount = 0
+        itsCount = 0
+        scannerCount = 0
+        personalCount = 0
+        studyingCount=0
+        sleepingCount = 0
+        browsingCount = 0
+        readingCount = 0
+        scanningCount = 0
+    %>
+    <% @students.each do |student|   
+        case student.floor
+            when 0
+                floor0Count = floor0Count + 1
+            when 1
+                floor1Count = floor1Count + 1
+            else
+        end
+      
+        case student.seating
+            when 'gamer'
+                gamerCount = gamerCount + 1
+            when "armchair"
+                armchairCount += 1
+            when "group table"
+                grouptableCount = grouptableCount + 1
+            when "individual table"
+                individualtableCount = individualtableCount + 1 
+            else
+        end
+        
+        case student.technology
+            when "its"
+                itsCount = itsCount + 1
+            when "scanner"
+                scannerCount += 1
+            when "personal"
+                personalCount = personalCount + 1
+            else
+        end
+        
+        case student.activity
+            when "studying"
+                studyingCount = studyingCount + 1
+            when "sleeping"
+                sleepingCount = sleepingCount + 1
+            when "scanning"
+                scanningCount += 1
+            when "reading"
+                readingCount += 1
+            when "browsing"
+                browsingCount += 1
+            else
+        end
+   
+     end %>
+
+    <table id="summary">
+        <tr>
+            <td></td>
+            <td>Total</td>
+        </tr>
+        <tr>
+            <td>Floor 0</td>
+            <td><%= floor0Count %></td>
+        </tr>
+        <tr>
+            <td>Floor 1</td>
+            <td><%= floor1Count %></td>
+        </tr>
+        <tr>
+            <td>Gamer Chair</td>
+            <td><%= gamerCount %></td>
+        </tr>
+        <tr>
+            <td>Armchair</td>
+            <td><%= armchairCount %></td>
+        </tr>
+        <tr>
+        <td>Group Table</td>
+            <td><%= grouptableCount %></td>
+        </tr>
+        <tr>
+            <td>Individual Table</td>
+            <td><%= individualtableCount %></td>
+        </tr>
+        <tr>
+            <td>Scanner</td>
+            <td><%= scannerCount%></td>
+        </tr>
+        <tr>
+            <td>ITS Tech</td>
+            <td><%= itsCount %></td>
+        </tr>       
+        <tr>
+            <td>Personal Tech</td>
+            <td><%= personalCount %></td>
+        </tr>
+        <tr>
+            <td>Studying</td>
+            <td><%= studyingCount %></td>
+        </tr>        
+        <tr>
+            <td>Sleeping</td>
+            <td><%= sleepingCount %></td>
+        </tr>
+        <tr>
+            <td>Browsing</td>
+            <td><%= browsingCount %></td>
+        </tr>
+        <tr>
+            <td>Scanning</td>
+            <td><%= scanningCount %></td>
+        </tr>
+        <tr>
+            <td>Reading</td>
+            <td><%= readingCount %></td>
+        </tr>
+    </table>
+    
+    <h1>Student Data</h1>
+  <table border="1" id="rawdata">
+      <tr>
+          <td>Floor</td>
+          <td>Activity</td>
+          <td>Seating</td>
+          <td>Technology</td>
+          <td>Time</td>
+      </tr>
+      <% @students.each do |student| %>
+          <tr>
+              <td> <%= student.floor %> </td>
+              <td> <%= student.activity %> </td>
+              <td> <%= student.seating %> </td>
+              <td> <%= student.technology %> </td>
+              <td> <%= student.created_at %> </td>
+          </tr>
+
+      <% end %>|
+      
+  </table>
+
+<h1>Floor</h1>
+<%= bar_chart Student.group(:floor).count %>
+
+<h1>Seating</h1>
+<%= bar_chart Student.group(:seating).count %>
+
+<h1>Technology</h1>
+<%= bar_chart Student.group(:technology).count %>
+
+<h1>Activity</h1>
+<%= bar_chart Student.group(:activity).count %>
+
+<h1>Timing</h1>
+
+<%= scatter_chart Student.pluck(:created_at) %>
