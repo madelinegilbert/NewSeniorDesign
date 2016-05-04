@@ -10,6 +10,9 @@ class StudentsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @students }
+      format.xml { render :xml => @students }
+      format.xls { send_data @students.to_xls, :filename => 'students.xls' }
+
     end
   end
   

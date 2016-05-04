@@ -34,6 +34,7 @@ gem 'responders'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'to_xls'
 
 group :development, :test do
  gem 'sqlite3'
